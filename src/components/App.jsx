@@ -4,20 +4,19 @@ import FormComponent from './Form';
 import ContactList from './ContactList';
 import Filter from './Filter';
 
+const localStorageData = JSON.parse(localStorage.getItem('contacts')) || [];
 
 const App = () => {
-  const [contacts, addContatcs] = useState([]);
+  const [contacts, addContatcs] = useState(localStorageData);
   const [filter, addFilter] = useState('');
 
   useEffect(() => {
-    contacts.length > 0 &&
-      localStorage.setItem('contacts', JSON.stringify(contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const contactDeleteHandler = id => {
     const updatedArr = contacts.filter(contact => contact.id !== id);
     addContatcs([...updatedArr]);
-    localStorage.setItem('contacts', JSON.stringify(contacts));
   };
 
   const showFilteredContacts = () => {
