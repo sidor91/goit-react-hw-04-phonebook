@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { ListOfContacts } from './ContactList.styled';
 import Contact from '../Contact';
 
-const ContactList = ({ data, onContactDelete }) => (
+const ContactList = ({ data, onContactDelete }) => {
+  return (
   <ListOfContacts>
     {data.map(contact => (
       <Contact
@@ -15,7 +16,7 @@ const ContactList = ({ data, onContactDelete }) => (
       />
     ))}
   </ListOfContacts>
-);
+)};
 
 Contact.ContactList = {
   data: PropTypes.arrayOf(PropTypes.object),
